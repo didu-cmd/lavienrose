@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>La Vie En Rose Addis | Bulbula Digital Menu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pink: #B8326F;
+      --pink-soft: #D84C8F;
+      --blue: #D6EAF8;
+      --white: #FFFFFF;
+      --glass: rgba(255, 255, 255, 0.82);
+      --shadow: 0 24px 70px rgba(184, 50, 111, 0.2);
+      --blue-shadow: 0 18px 50px rgba(214, 234, 248, 0.78);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--pink);
+      background:
+        radial-gradient(circle at top left, rgba(184, 50, 111, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(214, 234, 248, 0.94), transparent 34%),
+        linear-gradient(135deg, var(--white), rgba(214, 234, 248, 0.56), var(--white));
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    button {
+      border: 0;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 72vh;
+      display: grid;
+      place-items: center;
+      padding: 80px 18px 72px;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url("pic1.jpg") center/cover no-repeat;
+      transform: scale(1.1);
+      opacity: 0.66;
+      filter: blur(2px);
+      will-change: transform;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(135deg, rgba(184, 50, 111, 0.74), rgba(214, 234, 248, 0.74), rgba(255, 255, 255, 0.86)),
+        linear-gradient(to bottom, transparent, var(--white));
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      z-index: 2;
+      height: 180px;
+      background: linear-gradient(to bottom, transparent, var(--white));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      width: min(980px, 100%);
+    }
+
+    .eyebrow {
+      width: 118px;
+      height: 118px;
+      margin: 0 auto;
+      border: 4px solid rgba(255, 255, 255, 0.92);
+      border-radius: 50%;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 18px 40px rgba(184, 50, 111, 0.24);
+      backdrop-filter: blur(16px);
+    }
+
+    .eyebrow img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1.hero-title {
+      margin-top: 22px;
+      color: var(--white);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: 0.95;
+      text-shadow: 0 14px 40px rgba(184, 50, 111, 0.58);
+    }
+
+    .tagline {
+      margin: 22px auto 0;
+      max-width: 720px;
+      color: var(--white);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(25px, 3vw, 38px);
+      font-style: italic;
+      text-shadow: 0 10px 34px rgba(184, 50, 111, 0.45);
+    }
+
+    .category-nav {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-top: 1px solid var(--white);
+      border-bottom: 1px solid var(--white);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: var(--blue-shadow);
+      backdrop-filter: blur(22px);
+    }
+
+    .category-track {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 15px 18px;
+      scrollbar-width: none;
+    }
+
+    .category-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .category-link {
+      flex: 0 0 auto;
+      padding: 11px 18px;
+      border: 1px solid var(--white);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--pink);
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 10px 26px rgba(214, 234, 248, 0.48);
+      transition: 0.28s ease;
+    }
+
+    .category-link:hover,
+    .category-link.active {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, var(--pink), var(--pink-soft));
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    main {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      padding: 38px 18px 90px;
+    }
+
+    .menu-section {
+      scroll-margin-top: 92px;
+      padding: 48px 0;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .menu-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      display: inline-flex;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: var(--blue);
+      color: var(--pink);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-head h2 {
+      margin-top: 12px;
+      color: var(--pink);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 0.98;
+    }
+
+    .section-line {
+      height: 2px;
+      flex: 1;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--pink), var(--blue), var(--white));
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid var(--white);
+      border-radius: var(--radius);
+      background: var(--glass);
+      box-shadow: var(--blue-shadow);
+      text-align: left;
+      backdrop-filter: blur(22px);
+      transition: 0.42s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+    }
+
+    .image-wrap {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--blue);
+    }
+
+    .image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.72s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.06);
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--pink);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 26px rgba(184, 50, 111, 0.12);
+    }
+
+    .card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .card h3 {
+      color: var(--pink);
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      line-height: 1.04;
+    }
+
+    .price {
+      flex: 0 0 auto;
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--pink), var(--pink-soft));
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(184, 50, 111, 0.18);
+    }
+
+    .ingredients-label {
+      margin-top: 16px;
+      color: var(--pink);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      margin-top: 7px;
+      color: var(--pink-soft);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    .tap {
+      margin-top: auto;
+      padding-top: 16px;
+      color: var(--pink);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(184, 50, 111, 0.34);
+      backdrop-filter: blur(12px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-panel {
+      width: min(860px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      border: 1px solid var(--white);
+      border-radius: 26px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      animation: modalIn 0.25s ease;
+    }
+
+    .modal-image {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      max-height: 460px;
+      overflow: hidden;
+      background: var(--blue);
+    }
+
+    .modal-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--pink);
+      font-size: 28px;
+      line-height: 1;
+      box-shadow: var(--blue-shadow);
+      transition: 0.28s ease;
+    }
+
+    .close:hover {
+      transform: rotate(90deg);
+    }
+
+    .modal-body {
+      padding: clamp(22px, 4vw, 34px);
+    }
+
+    .modal-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .modal h1 {
+      color: var(--pink);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 6vw, 58px);
+      line-height: 0.98;
+    }
+
+    .modal-copy {
+      margin-top: 18px;
+      color: var(--pink-soft);
+      font-size: 15px;
+      font-weight: 650;
+      line-height: 1.8;
+    }
+
+    .modal h2 {
+      margin-top: 24px;
+      color: var(--pink);
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+    }
+
+    .modal ul {
+      margin-top: 12px;
+      padding-left: 22px;
+      list-style-type: disc;
+      color: var(--pink-soft);
+      font-weight: 700;
+      line-height: 1.9;
+    }
+
+    @keyframes modalIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        min-height: 64vh;
+        padding-top: 66px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-line {
+        margin-top: 18px;
+      }
+
+      .card-top,
+      .modal-title-row {
+        flex-direction: column;
+      }
+
+      .price {
+        width: fit-content;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section id="top" class="hero">
+    <div class="hero-bg" id="heroBg"></div>
+    <div class="hero-content">
+      <div class="eyebrow">
+        <img src="logo.jpg" alt="La Vie En Rose Addis logo">
+      </div>
+      <h1 class="hero-title">La Vie En Rose Addis | Bulbula</h1>
+      <p class="tagline">Experience Taste &amp; Elegance</p>
+    </div>
+  </section>
+
+  <nav class="category-nav" aria-label="Menu categories">
+    <div class="category-track" id="categoryTrack"></div>
+  </nav>
+
+  <main id="all-foods"></main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-image">
+        <img id="modalImg" src="" alt="">
+        <button class="close" id="closeModal" type="button" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-title-row">
+          <h1 id="modalTitle"></h1>
+          <strong class="price" id="modalPrice"></strong>
+        </div>
+        <p class="modal-copy" id="modalCopy"></p>
+        <h2>Ingredients</h2>
+        <ul id="modalIngredients"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuImage = "pic1.jpg";
+
+    const menu = [
+      {
+        id: "mains",
+        name: "Mains",
+        items: [
+          {
+            name: "Beef Tenderloin",
+            price: 1160,
+            image: menuImage,
+            badge: "Popular",
+            copy: "A polished steak plate built around tender grilled beef and a creamy potato base.",
+            ingredients: ["Marinated grilled beef tenderloin", "Creamy mashed potato", "House seasoning", "Pan jus"]
+          },
+          {
+            name: "Beef Stroganoff",
+            price: 909,
+            image: menuImage,
+            copy: "A warm, creamy beef dish with soft mushrooms and rice for a rich lunch or dinner.",
+            ingredients: ["Thinly sliced beef", "Onion", "Mushroom", "Cream sauce", "Steamed rice"]
+          },
+          {
+            name: "Golden Blue Beef",
+            price: 900,
+            image: menuImage,
+            badge: "New",
+            copy: "A layered beef plate with melted cheese and vegetables over smooth mashed potato.",
+            ingredients: ["Mashed potato", "Golden grilled beef", "Melted cheese", "Spinach", "Mushrooms"]
+          },
+          {
+            name: "Tuscan Chicken",
+            price: 1217,
+            image: menuImage,
+            badge: "Popular",
+            copy: "Creamy, colorful and elegant, with grilled chicken finished in Tuscan-style sauce.",
+            ingredients: ["Seasoned grilled chicken breast", "Cream sauce", "Spinach", "Cherry tomato", "Mashed potato"]
+          },
+          {
+            name: "Grilled Chicken",
+            price: 1162,
+            image: menuImage,
+            copy: "A classic grilled chicken plate with soft sides and clean seasoning.",
+            ingredients: ["Seasoned grilled chicken breast", "Rice", "Mashed potato", "House herbs"]
+          },
+          {
+            name: "Chicken Fried Rice",
+            price: 980,
+            image: menuImage,
+            copy: "A satisfying rice plate with pan-fried chicken and light vegetable flavor.",
+            ingredients: ["Pan-fried chicken breast", "Fried rice", "Mixed vegetables", "Light seasoning"]
+          },
+          {
+            name: "Butter Lemon Chicken",
+            price: 1229,
+            image: menuImage,
+            badge: "New Arrivals",
+            copy: "Bright lemon butter flavor meets gentle spice, served with vegetables and mashed potato.",
+            ingredients: ["Chicken breast", "Butter lemon spicy sauce", "Mixed vegetables", "Mashed potato"]
+          }
+        ]
+      },
+      {
+        id: "burgers",
+        name: "Burgers",
+        items: [
+          {
+            name: "House Beef Burger",
+            price: 772,
+            image: menuImage,
+            badge: "Popular",
+            copy: "A house-style beef burger with a soft bun, rich sauce and fries.",
+            ingredients: ["In-house bun", "Beef patty", "House sauce", "Caramelized onion", "Cheese", "French fries"]
+          },
+          {
+            name: "BBQ Beef Burger",
+            price: 845,
+            image: menuImage,
+            copy: "Smoky BBQ beef burger with cheese, pickles and a crisp side of fries.",
+            ingredients: ["In-house bun", "Beef patty", "BBQ sauce", "Cheese", "Lettuce", "Pickles", "French fries"]
+          },
+          {
+            name: "Crispy Chicken Burger",
+            price: 734,
+            image: menuImage,
+            badge: "New",
+            copy: "Crunchy chicken, creamy mayo and fresh vegetables in a soft bun.",
+            ingredients: ["In-house bun", "Crispy chicken patty", "Mayo sauce", "Cheese", "Lettuce", "Tomato", "French fries"]
+          },
+          {
+            name: "Cheese Burger",
+            price: 796,
+            image: menuImage,
+            copy: "A comfort burger with melted cheese, beef patty and classic toppings.",
+            ingredients: ["In-house bun", "Beef patty", "Mayo sauce", "Cheese", "Lettuce", "Tomato", "French fries"]
+          }
+        ]
+      },
+      {
+        id: "combos",
+        name: "Lunch / Dinner Combos",
+        items: [
+          {
+            name: "Fasting Combo 1",
+            price: 1020,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "A flexible combo plate with fasting-friendly choices and toasted bread.",
+            ingredients: ["Falafel or Nile perch fish", "Mixed salad or french fries", "Arrabbiata or tomato sauce pasta", "Toasted bread"]
+          },
+          {
+            name: "Fried Chicken Legs",
+            price: 857,
+            image: menuImage,
+            copy: "Crispy breaded chicken legs served with fries and BBQ sauce.",
+            ingredients: ["Breaded chicken legs", "BBQ sauce", "French fries", "Mixed spices"]
+          },
+          {
+            name: "Chicken Wings",
+            price: 852,
+            image: menuImage,
+            badge: "Popular",
+            copy: "Breaded wings with BBQ sauce and your choice of rice or fries.",
+            ingredients: ["Breaded chicken wings", "BBQ sauce", "Mixed spices", "Rice or french fries"]
+          },
+          {
+            name: "Butter Lemon Fish",
+            price: 1117,
+            image: menuImage,
+            badge: "New",
+            copy: "Grilled fish with lemon butter spice and soft mashed potato.",
+            ingredients: ["Grilled fish", "Butter lemon spicy sauce", "Mixed vegetables", "Mashed potato"]
+          },
+          {
+            name: "Fish Gulash",
+            price: 907,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "Nile perch cooked with tomato, onion and pepper over vegetable rice.",
+            ingredients: ["Breaded Nile perch fish", "Tomato", "Onion", "Pepper", "Vegetable rice"]
+          },
+          {
+            name: "Fish Cutlets",
+            price: 916,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "Fried Nile perch cutlets served with a gentle vegetable rice side.",
+            ingredients: ["Fried Nile perch fish", "Vegetable rice", "Light seasoning"]
+          },
+          {
+            name: "Fish and Chips",
+            price: 987,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "A crispy breaded fish plate with fries and three sauces.",
+            ingredients: ["Breaded fish", "French fries", "Ketchup", "Mayo", "Cheese sauce"]
+          },
+          {
+            name: "Eggplant Caponata",
+            price: 610,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "Soft eggplant cooked in juicy tomato sauce with vegetable rice.",
+            ingredients: ["Eggplant", "Tomato sauce", "Onion", "Pepper", "Vegetable rice"]
+          }
+        ]
+      },
+      {
+        id: "salads",
+        name: "Salads",
+        items: [
+          {
+            name: "Garden Salad",
+            price: 456,
+            image: menuImage,
+            copy: "A fresh, light salad with garden dressing and toasted bread.",
+            ingredients: ["Lettuce", "Shredded carrot", "Onion", "Garden dressing", "Toasted bread"]
+          },
+          {
+            name: "Avocado Salad",
+            price: 468,
+            image: menuImage,
+            badge: "Popular",
+            copy: "Creamy avocado folded into a crisp garden salad.",
+            ingredients: ["Lettuce", "Shredded carrot", "Onion", "Avocado", "Garden dressing", "Toasted bread"]
+          },
+          {
+            name: "Green Salad",
+            price: null,
+            image: menuImage,
+            copy: "A clean green salad with avocado dressing and fresh vegetables.",
+            ingredients: ["Lettuce", "Cucumber", "Tomato", "Onion", "Avocado dressing"]
+          },
+          {
+            name: "Tuna Salad",
+            price: 468,
+            image: menuImage,
+            copy: "A garden salad made more filling with tuna and toasted bread.",
+            ingredients: ["Lettuce", "Shredded carrot", "Onion", "Tuna", "Garden dressing", "Toasted bread"]
+          },
+          {
+            name: "Caesar Salad",
+            price: 728,
+            image: menuImage,
+            badge: "Popular",
+            copy: "A classic Caesar-style salad with chicken and crunchy bread crumbs.",
+            ingredients: ["Lettuce", "Bread crumbs", "Chicken", "Caesar dressing", "Toasted bread"]
+          }
+        ]
+      },
+      {
+        id: "sandwiches",
+        name: "Sandwiches & Wraps",
+        items: [
+          {
+            name: "Philly Cheese Steak",
+            price: 854,
+            image: menuImage,
+            badge: "Popular",
+            copy: "A rich beef sandwich with melted cheese and caramelized onion.",
+            ingredients: ["Beef steak slices", "Melted cheese", "Mayonnaise", "Caramelized onion", "French fries", "Brown or white bread"]
+          },
+          {
+            name: "Philly Cheese Chicken",
+            price: 827,
+            image: menuImage,
+            copy: "A creamy chicken sandwich with melted cheese and fries.",
+            ingredients: ["Chicken slices", "Melted cheese", "Mayonnaise", "Caramelized onion", "French fries", "Brown or white bread"]
+          },
+          {
+            name: "Chicken Crispy Wrap",
+            price: 837,
+            image: menuImage,
+            badge: "New",
+            copy: "A pita wrap filled with breaded chicken tenders and house sauce.",
+            ingredients: ["Pita bread", "Breaded chicken tenders", "House sauce", "Cheese", "French fries"]
+          },
+          {
+            name: "Fish Crispy Wrap",
+            price: 800,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "A crispy fish pita wrap served with fries.",
+            ingredients: ["Pita bread", "Breaded fish", "House sauce", "French fries"]
+          },
+          {
+            name: "Tuna Fajita Wrap",
+            price: 710,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "Tuna cooked fajita-style and wrapped in soft pita.",
+            ingredients: ["Pita bread", "Tuna", "Peppers", "Onion", "French fries"]
+          },
+          {
+            name: "Tuna Sandwich",
+            price: 632,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "A saucy tuna sandwich with vegetables and fries.",
+            ingredients: ["Tuna", "Sauce", "Onion", "Tomato", "Pepper", "French fries", "Brown or white bread"]
+          },
+          {
+            name: "Avocado Vegan Wrap",
+            price: 544,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "A soft pita wrap with avocado and house sauce.",
+            ingredients: ["Pita bread", "Avocado", "Onion", "Tomato", "House sauce", "French fries"]
+          },
+          {
+            name: "Veggie Sandwich",
+            price: 430,
+            image: menuImage,
+            copy: "A vegetable sandwich with pesto and seasoned potatoes.",
+            ingredients: ["Carrots", "Zucchini", "Cauliflower", "Broccoli", "Pesto", "Mixed spices", "Potatoes"]
+          }
+        ]
+      },
+      {
+        id: "pasta",
+        name: "Pasta Lovers",
+        items: [
+          {
+            name: "Ravioli",
+            price: 720,
+            image: menuImage,
+            badge: "Popular",
+            copy: "House-made ravioli filled with spinach and ricotta.",
+            ingredients: ["House-made ravioli", "Spinach", "Ricotta cheese", "Tomato, pesto, white or bolognese sauce"]
+          },
+          {
+            name: "Chicken Alfredo",
+            price: 700,
+            image: menuImage,
+            copy: "Creamy white sauce pasta cooked with chicken.",
+            ingredients: ["Butter", "Fresh cream", "Creamy white sauce", "Chicken", "Spaghetti or penne"]
+          },
+          {
+            name: "Pasta Bolognese",
+            price: 849,
+            image: menuImage,
+            badge: "Popular",
+            copy: "A tomato and minced meat pasta finished with fresh herbs.",
+            ingredients: ["Tomato sauce", "Minced meat", "Onion", "Fresh herbs", "Spaghetti or penne"]
+          },
+          {
+            name: "Chicken Pesto",
+            price: 899,
+            image: menuImage,
+            copy: "Creamy pesto pasta with chicken and cheese.",
+            ingredients: ["Creamy pesto sauce", "Butter", "Fresh cream", "Cheese", "Chicken", "Spaghetti or penne"]
+          },
+          {
+            name: "Pesto Pasta",
+            price: null,
+            image: menuImage,
+            copy: "Herby pesto sauce tossed with your choice of pasta.",
+            ingredients: ["Pesto sauce", "Herbs", "Spaghetti or penne"]
+          },
+          {
+            name: "Pasta Arrabbiata",
+            price: 598,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "Spicy tomato pasta with herbs and a bright finish.",
+            ingredients: ["Spicy tomato sauce", "Herbs", "Spaghetti or penne"]
+          },
+          {
+            name: "Tomato Sauce Pasta",
+            price: 590,
+            image: menuImage,
+            badge: "Fasting",
+            copy: "Simple tomato sauce pasta cooked with herbs.",
+            ingredients: ["Tomato sauce", "Herbs", "Spaghetti or penne"]
+          }
+        ]
+      }
+    ];
+
+    const money = price => price ? `${price.toLocaleString("en-US")} ETB` : "Ask";
+    const root = document.getElementById("all-foods");
+    const track = document.getElementById("categoryTrack");
+
+    const allLink = document.createElement("a");
+    allLink.href = "#all-foods";
+    allLink.className = "category-link active";
+    allLink.textContent = "All Foods";
+    track.appendChild(allLink);
+
+    menu.forEach(section => {
+      const link = document.createElement("a");
+      link.href = `#${section.id}`;
+      link.className = "category-link";
+      link.dataset.id = section.id;
+      link.textContent = section.name;
+      track.appendChild(link);
+
+      const sectionEl = document.createElement("section");
+      sectionEl.className = "menu-section";
+      sectionEl.id = section.id;
+      sectionEl.innerHTML = `
+        <div class="section-head">
+          <div>
+            <span class="section-kicker">Menu Section</span>
+            <h2>${section.name}</h2>
+          </div>
+          <div class="section-line"></div>
+        </div>
+        <div class="grid"></div>
+      `;
+
+      const grid = sectionEl.querySelector(".grid");
+
+      section.items.forEach(item => {
+        const card = document.createElement("button");
+        card.type = "button";
+        card.className = "card";
+        card.innerHTML = `
+          <div class="image-wrap">
+            <img src="${item.image}" alt="${item.name}" loading="lazy">
+            ${item.badge ? `<span class="badge">${item.badge}</span>` : ""}
+          </div>
+          <div class="card-body">
+            <div class="card-top">
+              <h3>${item.name}</h3>
+              <strong class="price">${money(item.price)}</strong>
+            </div>
+            <div class="ingredients-label">Ingredients</div>
+            <p class="summary">${item.ingredients.slice(0, 4).join(", ")}</p>
+            <div class="tap">Tap for details</div>
+          </div>
+        `;
+
+        card.addEventListener("click", () => openModal(item));
+        grid.appendChild(card);
+      });
+
+      root.appendChild(sectionEl);
+    });
+
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalCopy = document.getElementById("modalCopy");
+    const modalIngredients = document.getElementById("modalIngredients");
+    const closeModal = document.getElementById("closeModal");
+
+    function openModal(item) {
+      modalImg.src = item.image;
+      modalImg.alt = item.name;
+      modalTitle.textContent = item.name;
+      modalPrice.textContent = money(item.price);
+      modalCopy.textContent = item.copy;
+      modalIngredients.innerHTML = item.ingredients.map(ingredient => `<li>${ingredient}</li>`).join("");
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeMenuModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    closeModal.addEventListener("click", closeMenuModal);
+    modal.addEventListener("click", event => {
+      if (event.target === modal) closeMenuModal();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeMenuModal();
+    });
+
+    const reveal = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          reveal.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".menu-section").forEach(section => reveal.observe(section));
+
+    const active = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        document.querySelectorAll(".category-link").forEach(link => {
+          link.classList.toggle("active", link.dataset.id === entry.target.id);
+        });
+      });
+    }, { rootMargin: "-28% 0px -60% 0px", threshold: 0.08 });
+
+    document.querySelectorAll(".menu-section").forEach(section => active.observe(section));
+
+    const heroBg = document.getElementById("heroBg");
+    window.addEventListener("scroll", () => {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.16}px) scale(1.1)`;
+    }, { passive: true });
+  </script>
+</body>
+</html>
